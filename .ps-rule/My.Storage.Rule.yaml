@@ -1,0 +1,27 @@
+# Synopsis: Storage account names need to follow the naming convention sta<bu-4><deployment stage-4><application name><appid-2><role><application name> and <role> is 11. https://jmfamily.atlassian.net.mcas.ms/wiki/spaces/AR/pages/1162281737/Naming+Conventions#:~:text=sta%3Cbu%2D4%3E%3Cdeployment%20stage%2D4%3E%3Capplication%20name%3E%3Cappid%2D2%3E%3Crole%3E%0A%3Capplication%20name%3E%20and%20%3Crole%3E%20is%2011
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: My.Storage.NameConvention
+spec:
+  type:
+  - Microsoft.Storage/storageAccounts
+  condition:
+    allOf:
+      - name: '.'
+        match: '^sta[a-z0-9]{20,24}$' 
+        
+ 
+---
+ 
+# Synopsis: Storage accounts need tag with the name 'ProductOwner'
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: My.Storage.ProductOwnerTag
+spec:
+  type:
+  - Microsoft.Storage/storageAccounts
+  condition:
+    field: tags.productowner
+    exists: true
