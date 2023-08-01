@@ -10,11 +10,14 @@ jobs:
   Preview-Bicep-Changes:
     runs-on: ubuntu-latest
 
-    steps:   
+    steps:
+      # Checkout code
+    - uses: actions/checkout@v2
+    
     - name: Run PSRule analysis
       uses: microsoft/ps-rule@v2.9.0
       with:
         version: '1.11.1'
         modules: 'PSRule.Rules.Azure'
-        inputPath: src/
+        inputPath: 'src/modules'
         #source: deployment  
