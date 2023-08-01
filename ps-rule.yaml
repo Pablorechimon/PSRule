@@ -3,38 +3,23 @@ include:
     # Import all the Azure Well-Architected Framework rules
     - PSRule.Rules.Azure
  
- 
 configuration:
   # Enable code analysis of bicep files
   AZURE_BICEP_FILE_EXPANSION: true
   # Validate that the bicep CLI is used
   AZURE_BICEP_CHECK_TOOL: true
-  PSRULE_AZURE_BICEP_USE_AZURE_CLI: true
  
 input:
   pathIgnore:
   # Exclude module files
-  # - '**/*.bicep'
+  - '**/*.bicep'
   # Include test files for modules
-  - '!**/*'
+  - '!**/*.tests.bicep'
  
-# execution:
-#   # Disable warnings that files cannot be processed
-#   notProcessedWarning: true
+execution:
+  # Disable warnings that files cannot be processed
+  notProcessedWarning: false
    
 output:
   # Show results for rules with the Fail, Pass, or Error outcome
   outcome: 'Processed'
-  format: Sarif
-
-# rule:
-#   # Enable local rules
-#   includeLocal: false
-#   exclude:
-#     - 'Azure.Resource.UseTags'
-   
-# binding:
-#   # Bindings are required for local rules
-#   targetType:
-#   - type
-#   - resourceType
