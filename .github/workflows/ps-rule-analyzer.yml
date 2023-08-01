@@ -19,5 +19,5 @@ jobs:
       with:
         version: '1.11.1'
         modules: 'PSRule.Rules.Azure'
-        inputPath: 'src/modules'
+        inputPath: 'src/'
         #source: deployment  
